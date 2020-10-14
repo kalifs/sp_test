@@ -19,11 +19,10 @@ log.entries.each do |entry|
   count_acc.store(entry.page_id)
   uniq_acc.store(entry.page_id, group: entry.visitor_id)
 end
-headers = %w[Page Count]
 
 puts "\nPage views"
-counts_table = TablePrinter.new([headers] + count_acc.to_a, headers: true)
+counts_table = TablePrinter.new([['Page', 'Visits']] + count_acc.to_a, headers: true)
 print counts_table.print
-unique_visits_table = TablePrinter.new([headers] + uniq_acc.to_a, headers: true)
+unique_visits_table = TablePrinter.new([['Page', 'Unique views']] + uniq_acc.to_a, headers: true)
 puts "\nUnique page views"
 print unique_visits_table.print
