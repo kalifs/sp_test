@@ -5,10 +5,10 @@ class UniqueCountAccumulator
     @accumulator = {}
   end
 
-  def store(key, group:, count: 1)
+  def store(key, group:)
     accumulator[key] ||= { groups: Set.new, count: 0 }
     if accumulator[key][:groups].add?(group)
-      accumulator[key][:count] += count
+      accumulator[key][:count] += 1
     end
   end
 
