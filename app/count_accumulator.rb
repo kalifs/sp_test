@@ -9,7 +9,10 @@ class CountAccumulator
   end
 
   def to_a
-    accumulator.to_a.sort_by(&:last).reverse
+    accumulator.to_a.sort { |a, b|
+      rel = b.last <=> a.last
+      rel == 0 ? a.first <=> b.first : rel
+    }
   end
 
   private

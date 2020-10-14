@@ -36,4 +36,18 @@ RSpec.describe CountAccumulator do
       ]
     )
   end
+
+  it 'returns ordered list by count descending key ascending' do
+    subject.store('key2', 1)
+    subject.store('key1', 1)
+    subject.store('key3', 1)
+
+    expect(subject.to_a).to eq(
+      [
+        ['key1', 1],
+        ['key2', 1],
+        ['key3', 1]
+      ]
+    )
+  end
 end
