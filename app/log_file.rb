@@ -20,11 +20,11 @@ class LogFile
   def line_to_args(line)
     parts = line.split(' ')
     {
-      site: parts[0],
+      page_id: parts[0],
       visitor_id: parts[1]
     }
   end
 
 
-  LogEntry = Struct.new(:site, :visitor_id, keyword_init: true)
+  LogEntry = Struct.new(:page_id, :visitor_id, keyword_init: true)
 end
