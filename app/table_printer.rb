@@ -9,7 +9,7 @@ class TablePrinter
     data.each.with_index do |row, row_idx|
       line = []
       row.each.with_index do |value, col|
-        line << " #{value}#{padding(value,col)} "
+        line << " #{value}#{padding(value, col)} "
       end
       output << ('|' + line.join('|') + '|')
       output << header_divider if row_idx == 0 && headers
@@ -43,11 +43,10 @@ class TablePrinter
   end
 
   def col_sizes
-    @col_sizes ||= data.reduce([]) do |result, row|
+    @col_sizes ||= data.each_with_object([]) do |row, result|
       row.each.with_index do |value, col|
         result[col] = value.to_s.size if !result[col] || result[col] < value.to_s.size
       end
-      result
     end
   end
 end

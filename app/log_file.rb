@@ -30,6 +30,5 @@ class LogFile
     }
   end
 
-
   LogEntry = Struct.new(:page_id, :visitor_id, keyword_init: true)
 end

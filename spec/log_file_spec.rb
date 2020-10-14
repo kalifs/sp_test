@@ -4,11 +4,11 @@ require 'log_file'
 RSpec.describe LogFile do
   subject { described_class.new(file_path) }
 
-  let(:file_path) { File.expand_path('fixtures/simple.log' , __dir__) }
+  let(:file_path) { File.expand_path('fixtures/simple.log', __dir__) }
 
   describe '#lines' do
     it 'returns lines from file without newlines' do
-      expect(subject.lines).to eq(["/about/2 715.156.286.412"])
+      expect(subject.lines).to eq(['/about/2 715.156.286.412'])
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.describe LogFile do
     end
 
     context 'with missing page_id' do
-      let(:file_path) { File.expand_path('fixtures/with_missing_page.log' , __dir__) }
+      let(:file_path) { File.expand_path('fixtures/with_missing_page.log', __dir__) }
 
       it 'does not create entry' do
         expect(subject.entries.size).to eq(2)
@@ -29,7 +29,7 @@ RSpec.describe LogFile do
     end
 
     context 'with missing visitor_id' do
-      let(:file_path) { File.expand_path('fixtures/with_missing_visitor.log' , __dir__) }
+      let(:file_path) { File.expand_path('fixtures/with_missing_visitor.log', __dir__) }
 
       it 'does not create entry' do
         expect(subject.entries.size).to eq(2)
@@ -38,7 +38,7 @@ RSpec.describe LogFile do
     end
 
     context 'with empty lines' do
-      let(:file_path) { File.expand_path('fixtures/with_empty_line.log' , __dir__) }
+      let(:file_path) { File.expand_path('fixtures/with_empty_line.log', __dir__) }
 
       it 'does not create entry' do
         expect(subject.entries.size).to eq(2)

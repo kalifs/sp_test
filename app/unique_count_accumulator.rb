@@ -7,18 +7,16 @@ class UniqueCountAccumulator
 
   def store(key, group:)
     accumulator[key] ||= { groups: Set.new, count: 0 }
-    if accumulator[key][:groups].add?(group)
-      accumulator[key][:count] += 1
-    end
+    accumulator[key][:count] += 1 if accumulator[key][:groups].add?(group)
   end
 
   def to_a
     accumulator
-    .map { |key, value| [key, value[:count]] }
-    .sort { |a, b|
+      .map { |key, value| [key, value[:count]] }
+      .sort do |a, b|
       rel = b.last <=> a.last
       rel == 0 ? a.first <=> b.first : rel
-    }
+    end
   end
 
   private

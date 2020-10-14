@@ -3,13 +3,12 @@
 require 'bundler'
 Bundler.require(:default, :development)
 
-$LOAD_PATH << File.expand_path('../app' , __dir__)
+$LOAD_PATH << File.expand_path('../app', __dir__)
 
 require 'log_file'
 require 'count_accumulator'
 require 'unique_count_accumulator'
 require 'table_printer'
-
 
 log = LogFile.new(File.expand_path(ARGV[0]))
 

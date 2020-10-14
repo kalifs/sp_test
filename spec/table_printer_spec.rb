@@ -20,7 +20,7 @@ RSpec.describe TablePrinter do
       | looooooonger | word | in 1st col |
       ------------------------------------
     STR
-    expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, "")
+    expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, '')
 
     expect(subject.print).to eq(expected_output)
   end
@@ -33,7 +33,7 @@ RSpec.describe TablePrinter do
         -
         -
       STR
-      expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, "")
+      expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, '')
 
       expect(subject.print).to eq(expected_output)
     end
@@ -56,7 +56,7 @@ RSpec.describe TablePrinter do
         | looooooonger | word   | in 1st col |
         --------------------------------------
       STR
-      expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, "")
+      expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, '')
 
       expect(subject.print).to eq(expected_output)
     end

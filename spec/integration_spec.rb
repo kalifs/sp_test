@@ -4,7 +4,7 @@ RSpec.describe 'bin/run' do
   let(:path) { File.expand_path('fixtures/multiple_entries.log', __dir__) }
 
   it 'prints total visits and unique visits per page' do
-    output = %x`bin/run #{path}`
+    output = `bin/run #{path}`
 
     expected_output = <<-STR
 
@@ -26,7 +26,7 @@ RSpec.describe 'bin/run' do
       | /index    | 1     |
       ---------------------
     STR
-    expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, "")
+    expected_output.gsub!(/^#{expected_output.scan(/^[ \t]*(?=\S)/).min}/, '')
     expect(output).to eq(expected_output)
   end
 end
