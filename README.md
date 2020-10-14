@@ -21,3 +21,8 @@ Examples:
  * ruby 2.7.2 (see `.ruby-version`)
  * bundler
 
+
+## Running tests
+
+To run test:  `bin/test`
+To run specific test: `bin/test spec/some_spec.rb`
