@@ -8,6 +8,7 @@ $LOAD_PATH << File.expand_path('../app' , __dir__)
 require 'log_file'
 require 'count_accumulator'
 require 'unique_count_accumulator'
+require 'table_printer'
 
 
 log = LogFile.new(File.expand_path(ARGV[0]))
@@ -19,6 +20,11 @@ log.entries.each do |entry|
   count_acc.store(entry.page_id)
   uniq_acc.store(entry.page_id, group: entry.visitor_id)
 end
+headers = %w[Page Count]
 
-pp count_acc.to_a
-pp uniq_acc.to_a
+puts "\nPage views"
+counts_table = TablePrinter.new([headers] + count_acc.to_a, headers: true)
+print counts_table.print
+unique_visits_table = TablePrinter.new([headers] + uniq_acc.to_a, headers: true)
+puts "\nUnique page views"
+print unique_visits_table.print
