@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.require(:default, :development)
+
+$LOAD_PATH << File.expand_path('../app' , __dir__)
+
+require 'log_file'
+require 'count_accumulator'
+require 'unique_count_accumulator'
+
+
+log = LogFile.new(File.expand_path(ARGV[0]))
+
+count_acc = CountAccumulator.new
+uniq_acc = UniqueCountAccumulator.new
+
+log.entries.each do |entry|
+  count_acc.store(entry.page_id)
+  uniq_acc.store(entry.page_id, group: entry.visitor_id)
+end
+
+pp count_acc.to_a
+pp uniq_acc.to_a
